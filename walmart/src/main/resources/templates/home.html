@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+
+
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+<meta name="description" content="">
+
+<meta name="author" content="">
+
+<link rel="icon" href="favicon.ico">
+
+
+
+<title>Walmart</title>
+
+<!-- Bootstrap core CSS -->
+
+<link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+
+<link th:href="@{/bootstrap/css/jumbotron.css}" rel="stylesheet">
+
+<link th:href="@{/bootstrap/css/sticky-footer-navbar.css}"
+	rel="stylesheet">
+
+</head>
+
+
+
+<body>
+
+
+
+
+
+	<main role="main">
+
+
+
+		<!-- Main jumbotron for a primary marketing message or call to action -->
+
+		<div class="jumbotron">
+
+			<div class="container">
+
+				<h3>Encuentra el Producto que estas buscando.</h3>
+
+				Puedes buscar por descripción y Marca.
+
+				<form class="form-inline" th:action="@{/save}" method="post">
+
+					<input type="text" class="form-control mb-3" id="busqueda"
+						name="busqueda" placeholder="Escriba una búsqueda">&nbsp;
+
+
+					<button type="submit" class="btn btn-primary mb-3">Buscar</button>
+
+				</form>
+
+			</div>
+
+		</div>
+
+		<hr>
+
+
+
+		<div class="container">
+
+
+			<hr>
+
+			<div class="row" th:each=" ent :  ${entidad}">
+
+				<div class="col-md-3">
+
+					<img class="rounded mx-auto d-block"  	th:src="@{${ent.image}}"
+					
+					
+						alt="Generic placeholder image" width="150" height="150">
+						
+				<a th:href="@{${ent.image}}"> </a>		
+
+				</div>
+
+				<div class="col-md-9">
+
+
+					<h6 class="card-title">
+						<strong>Identificador Producto: </strong> <span
+							th:text="${ent.idProducto}"> </span>
+					</h6>
+
+					<h6 class="card-title">
+						<strong>Marca: </strong> <span th:text="${ent.brand}"> </span>
+					</h6>
+
+					<h6 class="card-title">
+						<strong>Descripción: </strong> <span th:text="${ent.description}">
+						</span>
+					</h6>
+
+					<h6 class="card-title">
+						<strong>Precio: </strong> <span th:text="${ent.price}"> </span>
+					</h6>
+
+
+				</div>
+
+			</div>
+
+
+
+			<hr>
+
+		</div>
+		<!-- /container -->
+
+
+
+	</main>
+
+
+
+
+	<!-- Bootstrap core JavaScript
+
+    ================================================== -->
+
+	<!-- Placed at the end of the document so the pages load faster -->
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+
+	<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+
+</body>
+
+</html>
